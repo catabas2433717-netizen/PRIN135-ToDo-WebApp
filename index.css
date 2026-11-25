@@ -1,0 +1,102 @@
+:root{
+  --bg:#c3c072;
+  --card:#d5d539;
+  --line:#dd67b0;
+  --line-strong:#454545;
+  --text:#1a1313;
+  --strong:#ececec;
+  --muted:#8c8c8c;
+  --fill:#ac789d;
+  box-sizing:border-box;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;min-height:100vh;
+  display:flex;justify-content:center;align-items:flex-start;
+  padding:32px 16px;
+  background:var(--bg);color:var(--text);
+  font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #bdbdbd;outline-offset:2px}
+
+.card{
+  width:100%;max-width:560px;
+  background:var(--card);
+  border:1px solid var(--line-strong);
+  border-radius:24px;
+  padding:34px 32px 26px;
+}
+h1{margin:0 0 26px;font-size:38px;font-weight:700;letter-spacing:-.02em;color:var(--strong)}
+
+/* add row */
+.add{display:flex;gap:10px;margin-bottom:20px}
+.add input{
+  background:transparent;border:1px solid var(--line-strong);border-radius:10px;
+  padding:14px 16px;min-width:0;color:var(--strong);
+}
+.add input::placeholder{color:#6b6b6b}
+.task{flex:1}
+.hours{width:110px}
+.add-btn{
+  background:#d4d4d4;color:#000;border:0;border-radius:10px;
+  padding:0 22px;font-weight:600;cursor:pointer;
+}
+.add-btn:hover{background:#e4e4e4}
+
+/* filters */
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.filters{display:flex;gap:14px}
+.filter{
+  background:transparent;border:1px solid transparent;border-radius:999px;
+  padding:5px 16px;color:var(--muted);cursor:pointer;
+}
+.filter.active{border-color:var(--line-strong);color:var(--strong);font-weight:600}
+.link{
+  background:none;border:0;padding:0;cursor:pointer;
+  color:var(--muted);text-decoration:underline;font-size:15px;
+}
+.link:hover{color:var(--strong)}
+
+/* list */
+.list{list-style:none;margin:0;padding:0}
+.item{
+  display:flex;align-items:center;gap:14px;
+  padding:20px 0;border-bottom:1px solid var(--line);
+}
+.item input[type=checkbox]{width:22px;height:22px;accent-color:#d4d4d4;flex:none;cursor:pointer}
+.label{flex:1;color:var(--strong);overflow-wrap:anywhere}
+.item.done .label{text-decoration:line-through;color:var(--muted)}
+.item.done .badge{opacity:.6}
+
+/* difficulty badges: one hue, three weights */
+.badge{
+  flex:none;border-radius:999px;padding:3px 14px;font-size:14px;font-weight:600;
+  border:1px solid var(--line-strong);
+}
+.badge.easy{background:transparent;color:var(--text)}
+.badge.medium{background:var(--fill);border-color:var(--fill);color:var(--strong)}
+.badge.hard{background:#d4d4d4;border-color:#d4d4d4;color:#000}
+
+.remove{
+  background:none;border:0;cursor:pointer;flex:none;
+  color:var(--muted);font-size:22px;line-height:1;padding:0 4px;
+}
+.remove:hover{color:var(--strong)}
+
+/* footer */
+.footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 0 6px;color:var(--muted);font-size:15px;
+}
+.hint{margin:10px 0 0;text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:480px){
+  .card{padding:20px 16px}
+  .add{flex-wrap:wrap}
+  .task{flex-basis:100%}
+  .hours{flex:1}
+  .add-btn{padding:12px 22px}
+  .toolbar{flex-wrap:wrap;gap:8px}
+}
